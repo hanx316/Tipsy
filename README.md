@@ -1,5 +1,5 @@
 # Tipsy
-Facebook-style tooltips plugin that rewrited from https://github.com/jaz303/tipsy with original JavaScript
+Facebook-style tooltips plugin that rewrited from https://github.com/jaz303/tipsy with plain JavaScript
 
 最近迁移一个旧项目到vue写的新项目上，老项目用到了tipsy这个jquery插件。
 
