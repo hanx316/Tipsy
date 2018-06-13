@@ -181,16 +181,20 @@ export default function(selector, options) {
     trigger: 'hover'
   }
   let nodes = Array.from(document.querySelectorAll(selector))
+  let eventIn = ''
+  let eventOut = ''
   options = Object.assign({}, defaultOps, options)
-  nodes.forEach(node => getTipsy(node))
-  if (options.trigger != 'manual') {
-    let eventIn  = options.trigger == 'hover' ? 'mouseenter' : 'focus'
-    let eventOut = options.trigger == 'hover' ? 'mouseleave' : 'blur'
-    nodes.forEach(node => {
+  nodes.forEach(node => {
+    getTipsy(node)
+    if (!eventIn || !eventOut) {
+      eventIn  = options.trigger == 'hover' ? 'mouseenter' : 'focus'
+      eventOut = options.trigger == 'hover' ? 'mouseleave' : 'blur'
+    }
+    if (options.trigger != 'manual') {
       node.addEventListener(eventIn, enter)
       node.addEventListener(eventOut, leave)
-    })
-  }
+    }
+  })
 
   function getTipsy(node) {
     if (!node.tipsy) {
